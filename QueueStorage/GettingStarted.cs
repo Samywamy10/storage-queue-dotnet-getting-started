@@ -37,21 +37,21 @@ namespace QueueStorage
             string queueName = "demotest-" + System.Guid.NewGuid().ToString();
 
             // Create or reference an existing queue.
-            CloudQueue queue = CreateQueueAsync(queueName).Result; 
+            CloudQueue queue = await CreateQueueAsync(queueName); 
  
             // Demonstrate basic queue functionality.  
             await BasicQueueOperationsAsync(queue); 
  
             // Demonstrate how to update an enqueued message 
-            await UpdateEnqueuedMessageAsync(queue); 
+            //await UpdateEnqueuedMessageAsync(queue); 
  
             // Demonstrate advanced functionality such as processing of batches of messages 
-            await ProcessBatchOfMessagesAsync(queue); 
+            //await ProcessBatchOfMessagesAsync(queue); 
 
             // When you delete a queue it could take several seconds before you can recreate a queue with the same 
             // name - hence to enable you to run the demo in quick succession the queue is not deleted. If you want  
             // to delete the queue uncomment the line of code below.  
-            await DeleteQueueAsync(queue); 
+            //await DeleteQueueAsync(queue); 
 
         }
 
@@ -108,11 +108,11 @@ namespace QueueStorage
             // of your code can get the same message and try again. 
             Console.WriteLine("4. De-queue the next message");
             CloudQueueMessage message = await queue.GetMessageAsync();
-            if (message != null)
-            {
-                Console.WriteLine("Processing & deleting message with content: {0}", message.AsString);
-                await queue.DeleteMessageAsync(message);
-            }
+            //if (message != null)
+            //{
+            //    Console.WriteLine("Processing & deleting message with content: {0}", message.AsString);
+            //    await queue.DeleteMessageAsync(message);
+            //}
         }
 
         /// <summary>
